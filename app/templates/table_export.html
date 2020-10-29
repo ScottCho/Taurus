@@ -1,0 +1,89 @@
+<html>
+<link href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table-locale-all.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
+<div id="toolbar">
+  <button id="remove" class="btn btn-danger" disabled>
+     <a  href="http://xxx/delete/[ids]">删除</a>
+
+  </button>
+</div>
+
+
+<table  id="table"
+  data-toggle="table"
+  data-toggle="table"
+  data-show-columns="true"
+  data-show-columns-toggle-all="true"
+  data-pagination="true"
+  data-show-export="true"
+  data-locale="zh-CN"
+  data-search="true">
+
+  <thead>
+    <tr>
+      <th data-checkbox="true"></th>
+      <th data-sortable="true"  data-field="id">Item ID</th>
+      <th data-field="name">Item Name</th>
+      <th data-field="price">Item Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th data-checkbox="true"></th>
+      <td>1</td>
+      <td>Item 1</td>
+      <td>$1</td>
+    </tr>
+    <tr>
+      <th data-checkbox="true"></th>
+      <td>2</td>
+      <td>Item 2</td>
+      <td>$2</td>
+    </tr>
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  var $table = $('#table')
+  var $remove = $('#remove')
+  var selections = []
+
+
+  function getIdSelections() {
+    return $.map($table.bootstrapTable('getSelections'), function (row) {
+      return row.id
+    })
+  }
+
+
+  $table.on('check.bs.table uncheck.bs.table ' +
+      'check-all.bs.table uncheck-all.bs.table',
+    function () {
+      $remove.prop('disabled', !$table.bootstrapTable('getSelections').length)
+
+      // save your data, here just save the current page
+      selections = getIdSelections()
+      // push or splice the selections if you want to save all data selections
+    })
+
+
+  $remove.click(function () {
+      var ids = getIdSelections()
+      alert(ids)
+      $table.bootstrapTable('remove', {
+        field: 'id',
+        values: ids
+      })
+      $remove.prop('disabled', true)
+    })
+</script>
+</html>
