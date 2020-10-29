@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}商品管理{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+     <table  id="table"
+      data-toggle="table"
+      data-toggle="table"
+      data-pagination="true"
+      data-show-export="true"
+      data-show-columns="true"
+      data-show-columns-toggle-all="true"
+      data-locale="zh-CN"
+      data-search="true">
+      <thead>
+        <tr class="active">
+        	<th>#</th>
+        	<th data-sortable="true">货号</th>
+        	<th>品牌</th>
+        	<th>类别</th>
+        	<th>配色</th>
+        	<th data-sortable="true">上市日期</th>
+          <th data-sortable="true">进货价</th>
+          <th data-sortable="true">库存</th>
+          <th>备注</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+    	{% for good in goods %}
+        <tr >
+          <td>{{ good.id }}</td>
+          <td>{{ good.numbers }}</td>
+          <td>{{ good.brand }}</td>
+          <td>{{ good.tag }}</td>
+          <td>{{ good.colour }}</td>
+          <td>{{ good.launch_date.strftime('%Y-%m-%d') }}</td>
+          <td>{{ good.buying_price }}</td>
+          <td>{{ good.counts }}</td>
+          <td>{{ good.remark }}</td>
+          <td>
+            <a class="btn btn-success btn-sm" href="{{ url_for('goods.edit_good', id=good.id) }}">编辑</a>
+
+            <a class="btn btn-danger btn-sm" href="{{ url_for('goods.delete_good', id=good.id) }}" onclick="return confirm('确认删除?')";>删除</a>
+          </td>
+        </tr>
+    	{% endfor %}
+    	</tbody>
+     </table>
+{% endblock content %}
+
+{% block scripts %}
+     {{ super() }}
+     <script type="text/javascript">
+      $(document).ready(function() {
+        $('.datatable').DataTable({
+        });
+    });
+     </script>
+{% endblock %}

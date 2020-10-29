@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}录入商品{% endblock %}
+{% block content %}
+
+<form class="form-horizontal" method="post">
+  <div class="form-group">
+    <label  class="col-sm-2 control-label">编号</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="numbers" placeholder="商品编号">
+    </div>
+  </div>
+  <div class="form-group">
+    <label  class="col-sm-2 control-label">品牌</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="brand" placeholder="品牌">
+    </div>
+  </div>
+	<div class="form-group">
+    <label  class="col-sm-2 control-label">类别</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="tag" placeholder="类别">
+    </div>
+  </div>
+
+	<div class="form-group">
+    <label  class="col-sm-2 control-label">配色</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="colour" placeholder="配色">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label  class="col-sm-2 control-label">上市日期</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="launch_date" placeholder="xxxx-xx-xx">
+    </div>
+  </div>
+
+	<div class="form-group">
+    <label  class="col-sm-2 control-label">数量</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" name="counts" placeholder="商品数量">
+    </div>
+  </div>
+
+	<div class="form-group">
+    <label  class="col-sm-2 control-label">备注</label>
+    <div class="col-sm-10">
+      <textarea class="form-control" rows="3" name="remark"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">提交</button>
+    </div>
+  </div>
+</form>
+{% endblock %}

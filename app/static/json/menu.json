@@ -1,0 +1,46 @@
+[{
+	  "menuId":"1",
+      "menuName": "基本信息",
+      "menuSrc":"auth/login",
+      "child": [{
+      "menuId":"8",
+      "pMenuId":"1",
+          "menuName": "会员概览",
+          "menuSrc":"auth/login"
+      },{
+      "menuId":"1",
+      "pMenuId":"8",
+          "menuName": "添加会员",
+          "menuSrc":"auth/login"
+      }]
+  },{
+	  "menuId":"2",
+      "menuName": "会员管理",
+      "menuSrc":"#",
+      "child": [{
+		  "menuId":"3",
+		  "pMenuId":"2",
+          "menuName": "会员概览",
+          "menuSrc":"auth/login"
+      },{
+		  "menuId":"4",
+		  "pMenuId":"2",
+          "menuName": "添加会员",
+          "menuSrc":"auth/login"
+      }] 
+  },{
+      "menuId":"5",
+      "menuName": "后台管理",
+      "menuSrc":"#",
+      "child": [{
+	      "menuId":"5",
+		  "pMenuId":"6",
+          "menuName": "凭证管理",
+          "menuSrc":"{{&nbsp;url_for(&apos;backend.manage_credence&apos;)&nbsp;}}"
+      },{
+		  "menuId":"5",
+		  "pMenuId":"7",
+          "menuName": "机器管理",
+          "menuSrc":"http://baidu.com"
+      }]
+  }]

@@ -1,0 +1,9 @@
+.error {
+   color: red
+}
+
+
+.userlink a:link {text-decoration:none}
+.userlink a:visited {text-decoration:none;}
+.userlink a:hover {text-decoration:underline;}
+.userlink a:active {text-decoration:underline;} 

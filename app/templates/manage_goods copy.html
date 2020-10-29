@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}商品管理{% endblock %}
+
+{% block content %}
+	<div class="container-fluid">
+     <table class="table table-bordered table-condensed table-hover table-striped datatable"  >
+      <thead><br/>
+        <tr class="active">
+        	<th>#</th>
+        	<th>货号</th>
+        	<th>品牌</th>
+        	<th>类别</th>
+        	<th>配色</th>
+        	<th>上市日期</th>
+          <th>进货价</th>
+          <th>库存</th>
+          <th>备注</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+    	{% for good in goods %}
+        <tr >
+          <td>{{ good.id }}</td>
+          <td>{{ good.numbers }}</td>
+          <td>{{ good.brand }}</td>
+          <td>{{ good.tag }}</td>
+          <td>{{ good.colour }}</td>
+          <td>{{ good.launch_date.strftime('%Y-%m-%d') }}</td>
+          <td>{{ good.buying_price }}</td>
+          <td>{{ good.counts }}</td>
+          <td>{{ good.remark }}</td>
+          <td>
+            <a class="btn btn-success btn-sm" href="{{ url_for('goods.edit_good', id=good.id) }}">编辑</a>
+
+            <a class="btn btn-danger btn-sm" href="{{ url_for('goods.delete_good', id=good.id) }}" onclick="return confirm('确认删除?')";>删除</a>
+          </td>
+        </tr>
+    	{% endfor %}
+    	</tbody>
+     </table>
+{% endblock content %}
+
+{% block scripts %}
+     {{ super() }}
+     <script type="text/javascript">
+      $(document).ready(function() {
+        $('.datatable').DataTable({
+        });
+    });
+     </script>
+{% endblock %}
